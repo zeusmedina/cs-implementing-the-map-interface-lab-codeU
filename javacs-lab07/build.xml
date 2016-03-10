@@ -132,11 +132,6 @@
             <classpath refid="JavaCS.classpath"/>
         </junit>
     </target>
-    <target name="Indexer (1)">
-        <java classname="com.flatironschool.javacs.Indexer" failonerror="true" fork="yes">
-            <classpath refid="JavaCS.classpath"/>
-        </java>
-    </target>
     <target name="ListLinks">
         <java classname="com.flatironschool.javacs.ListLinks" failonerror="true" fork="yes">
             <classpath refid="JavaCS.classpath"/>
@@ -210,6 +205,88 @@
         <java classname="com.flatironschool.javacs.WikiPhilosophy" failonerror="true" fork="yes">
             <classpath refid="JavaCS.classpath"/>
         </java>
+    </target>
+    <target name="MyLinearMap">
+        <java classname="com.flatironschool.javacs.MyLinearMap" failonerror="true" fork="yes">
+            <classpath refid="JavaCS.classpath"/>
+        </java>
+    </target>
+    <target depends="MyLinearMapTest" name="test" />
+    <target name="MyLinearMapTest">
+        <mkdir dir="${junit.output.dir}"/>
+        <junit fork="yes" printsummary="withOutAndErr">
+            <formatter type="xml"/>
+            <formatter type="plain" usefile="no" />
+            <test name="com.flatironschool.javacs.MyLinearMapTest" todir="${junit.output.dir}"/>
+            <classpath refid="JavaCS.classpath"/>
+        </junit>
+    </target>
+    <target name="WikiNodeIterable">
+        <java classname="com.flatironschool.javacs.WikiNodeIterable" failonerror="true" fork="yes">
+            <classpath refid="JavaCS.classpath"/>
+        </java>
+    </target>
+    <target name="WikiNodeExample">
+        <java classname="com.flatironschool.javacs.WikiNodeExample" failonerror="true" fork="yes">
+            <classpath refid="JavaCS.classpath"/>
+        </java>
+    </target>
+    <target name="ProfileListAdd">
+        <java classname="com.flatironschool.javacs.ProfileListAdd" failonerror="true" fork="yes">
+            <classpath refid="JavaCS.classpath"/>
+        </java>
+    </target>
+    <target name="MyBetterMap">
+        <java classname="com.flatironschool.javacs.MyBetterMap" failonerror="true" fork="yes">
+            <classpath refid="JavaCS.classpath"/>
+        </java>
+    </target>
+    <target name="MyBetterMapTest">
+        <mkdir dir="${junit.output.dir}"/>
+        <junit fork="yes" printsummary="withOutAndErr">
+            <formatter type="xml"/>
+            <test name="com.flatironschool.javacs.MyBetterMapTest" todir="${junit.output.dir}"/>
+            <classpath refid="JavaCS.classpath"/>
+        </junit>
+    </target>
+    <target name="MyHashMap">
+        <java classname="com.flatironschool.javacs.MyHashMap" failonerror="true" fork="yes">
+            <classpath refid="JavaCS.classpath"/>
+        </java>
+    </target>
+    <target name="MyHashMapTest">
+        <mkdir dir="${junit.output.dir}"/>
+        <junit fork="yes" printsummary="withOutAndErr">
+            <formatter type="xml"/>
+            <test name="com.flatironschool.javacs.MyHashMapTest" todir="${junit.output.dir}"/>
+            <classpath refid="JavaCS.classpath"/>
+        </junit>
+    </target>
+    <target name="TermCounter">
+        <java classname="com.flatironschool.javacs.TermCounter" failonerror="true" fork="yes">
+            <classpath refid="JavaCS.classpath"/>
+        </java>
+    </target>
+    <target name="Index (1)">
+        <java classname="com.flatironschool.javacs.Index" failonerror="true" fork="yes">
+            <classpath refid="JavaCS.classpath"/>
+        </java>
+    </target>
+    <target name="TermCounterTest">
+        <mkdir dir="${junit.output.dir}"/>
+        <junit fork="yes" printsummary="withOutAndErr">
+            <formatter type="xml"/>
+            <test name="com.flatironschool.javacs.TermCounterTest" todir="${junit.output.dir}"/>
+            <classpath refid="JavaCS.classpath"/>
+        </junit>
+    </target>
+    <target name="IndexTest">
+        <mkdir dir="${junit.output.dir}"/>
+        <junit fork="yes" printsummary="withOutAndErr">
+            <formatter type="xml"/>
+            <test name="com.flatironschool.javacs.IndexTest" todir="${junit.output.dir}"/>
+            <classpath refid="JavaCS.classpath"/>
+        </junit>
     </target>
     <target name="junitreport">
         <junitreport todir="${junit.output.dir}">

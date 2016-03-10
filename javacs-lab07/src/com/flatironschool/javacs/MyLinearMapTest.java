@@ -95,15 +95,6 @@ public class MyLinearMapTest {
 	}
 
 	/**
-	 * Test method for {@link com.flatironschool.javacs.MyLinearMap#entrySet()}.
-	 */
-	@Test
-	public void testEntrySet() {
-		Set<Map.Entry<String, Integer>> entrySet = map.entrySet();
-		assertThat(entrySet.size(), is(4));
-	}
-
-	/**
 	 * Test method for {@link com.flatironschool.javacs.MyLinearMap#put(java.lang.Object, java.lang.Object)}.
 	 */
 	@Test

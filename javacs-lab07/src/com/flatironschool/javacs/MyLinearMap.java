@@ -6,6 +6,7 @@ package com.flatironschool.javacs;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Map;
 import java.util.Set;
 
@@ -19,6 +20,8 @@ import java.util.Set;
  *
  */
 public class MyLinearMap<K, V> implements Map<K, V> {
+
+	private List<Entry> entries = new ArrayList<Entry>();
 
 	public class Entry implements Map.Entry<K, V> {
 		private K key;
@@ -43,9 +46,7 @@ public class MyLinearMap<K, V> implements Map<K, V> {
 			return value;
 		}
 	}
-	
-	private ArrayList<Entry> entries = new ArrayList<Entry>();
-	
+		
 	@Override
 	public void clear() {
 		entries.clear();
@@ -56,17 +57,9 @@ public class MyLinearMap<K, V> implements Map<K, V> {
 		return findEntry(target) != null;
 	}
 
-	@Override
-	public boolean containsValue(Object target) {
-		for (Entry entry: entries) {
-			if (equals(target, entry.getValue())) {
-				return true;
-			}
-		}
-		return false;
-	}
-
 	/**
+	 * Returns the entry that contains the target key, or null if there is none. 
+	 * 
 	 * @param target
 	 */
 	private Entry findEntry(Object target) {
@@ -78,6 +71,13 @@ public class MyLinearMap<K, V> implements Map<K, V> {
 		return null;
 	}
 
+	/**
+	 * Compares two keys or two values, handling null correctly.
+	 * 
+	 * @param target
+	 * @param obj
+	 * @return
+	 */
 	private boolean equals(Object target, Object obj) {
 		if (target == null) {
 			return obj == null;
@@ -86,20 +86,18 @@ public class MyLinearMap<K, V> implements Map<K, V> {
 	}
 
 	@Override
-	public Set<Map.Entry<K, V>> entrySet() {
-		// We can't instantiate Set<java.util.Map.Entry<K, V>>, so we have to instantiate Set<Object>
-		// and then typecast it.
-		@SuppressWarnings("unchecked")
-		Set<? extends Map.Entry<K, V>> set = (Set<? extends Map.Entry<K, V>>) new HashSet<Object>();
+	public boolean containsValue(Object target) {
+		for (Map.Entry<K, V> entry: entries) {
+			if (equals(target, entry.getValue())) {
+				return true;
+			}
+		}
+		return false;
+	}
 
-		// The only way I could make it work is to typecast in two steps.  Not sure if there's
-		// a better way, but this will do for now.
-		@SuppressWarnings("unchecked")
-		Set<java.util.Map.Entry<K, V>> set2 = (Set<Map.Entry<K, V>>) set;
-		
-		// Now we can add the entries (with just one more typecast!) 
-		set2.addAll((Collection<? extends Map.Entry<K, V>>) entries);
-		return set2;
+	@Override
+	public Set<Map.Entry<K, V>> entrySet() {
+		throw new UnsupportedOperationException();
 	}
 
 	@Override
@@ -176,12 +174,25 @@ public class MyLinearMap<K, V> implements Map<K, V> {
 	 */
 	public static void main(String[] args) {
 		Map<String, Integer> map = new MyLinearMap<String, Integer>();
-		map.put("Word", 1);
-		Integer value = map.get("Word");
+		map.put("Word1", 1);
+		map.put("Word2", 2);
+		Integer value = map.get("Word1");
 		System.out.println(value);
 		
-		for (Map.Entry entry: map.entrySet()) {
-			System.out.println(entry.getKey() + ", " + entry.getValue());
+		for (String key: map.keySet()) {
+			System.out.println(key + ", " + map.get(key));
 		}
+	}
+
+	/**
+	 * Returns a reference to `entries`.
+	 * 
+	 * This is not part of the Map interface; it is here to provide the functionality
+	 * of `entrySet` in a way that is substantially simpler than the "right" way.
+	 * 
+	 * @return
+	 */
+	protected Collection<? extends java.util.Map.Entry<K, V>> getEntries() {
+		return entries;
 	}
 }
