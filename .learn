@@ -1,6 +1,7 @@
 tags:
-  - a tag
+  - Map interface
+  - Key-value pairs
 languages:
-  - a language
+  - Java
 resources: 
   - 0
