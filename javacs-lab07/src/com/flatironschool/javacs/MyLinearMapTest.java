@@ -7,6 +7,7 @@ import static org.junit.Assert.assertThat;
 import static org.hamcrest.CoreMatchers.*;
 
 import java.util.Collection;
+import java.util.HashMap;
 import java.util.Map;
 import java.util.Set;
 
@@ -113,7 +114,12 @@ public class MyLinearMapTest {
 	 */
 	@Test
 	public void testPutAll() {
-		
+		Map<String, Integer> m = new HashMap<String, Integer>();
+		m.put("Six", 6);
+		m.put("Seven", 7);
+		m.put("Eight", 8);
+		map.putAll(m);
+		assertThat(map.size(), is(7));
 	}
 
 	/**
