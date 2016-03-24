@@ -20,7 +20,7 @@ import org.junit.Test;
  */
 public class MyLinearMapTest {
 
-	private Map<String, Integer> map;
+	protected Map<String, Integer> map;
 
 	/**
 	 * @throws java.lang.Exception
