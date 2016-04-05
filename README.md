@@ -7,7 +7,7 @@
 
 ## Overview
 
-In the next few labs, we present several implementations of the `Map` interface.  One of them, like the `HashMap` provided by Java, is based on a **hash table**, which is arguably the most magical data structure ever invented.  Another, which is similar to `TreeMap`, is not quite as magical, but it has the added capability that it can iterate the element in order.
+In the next few labs, we present several implementations of the `Map` interface.  One of them, like the `HashMap` provided by Java, is based on a **hash table**, which is arguably the most magical data structure ever invented.  Another, which is similar to `TreeMap`, is not quite as magical, but it has the added capability that it can iterate its elements in order.
 
 You will have a chance to implement these data structures, and then we will analyze their performance.
 
